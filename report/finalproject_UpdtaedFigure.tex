@@ -1,0 +1,219 @@
+
+
+\documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{color}
+\newcommand{\redtxt} [1]{\textcolor{red}{#1}}
+
+
+\title{My Final Project}
+\author{Karan Singh}
+\date{February 29 2020}
+
+% stuff for document
+
+\begin{document}
+\maketitle
+\section*{Abstract}
+Discuss the concpet of coexistence and how plants have this in order for them to thrive as a species. Also, I will mention that certain planst do not have positive interactions with other and actaully release toxic chemicals, which decrease the likelyhood of two species to be able to coexist with one another.
+\newpage
+\tableofcontents
+
+
+\newpage
+\section{Introduction}
+The purpose of the study and the data that I decided to manipulate was to see how different species of plant-plant interactions play a role in different levels of arid environments. There is a two-phase mosaic structure of how covered the vegetation patches are (banded and spotted.) However, recent studies indicate striking similarities in patch dynamics and in mechanisms explaining their origin and maintenance. The banded and spotted vegetation, which are characterized by patch shape, both originate from common mechanisms, although each is dominated by a different driver. Banded vegetation is predominantly seen where water is the dominant driver of redistribution of materials, and spotted vegetation occurs when wind is the major factor.
+
+From the past, the ubiquitous technique that was utilized for plant interactions was one that was directed towards reducing competition (increase facilitation) amongst the pre-existing vegetation. With increasing usage of facilitation as a main process of regulating the makeup of communities; a change in the usage of restoration for better awareness of the benefits of plant communities has led to conserving vegetation. Its important to note that semiarid and tropical systems, on average had a positive association with neighborhood effects than the wetlands, where negative interactions were prevalent. It will be intriguing to see, as we further delve into this plant-plant interactions on how different levels of aridity, with different types of plant species (nurse shrubs, allelopathy shrubs, and perennial grass) lead to different levels of coexistence.
+
+
+
+\section{Materials \& Methods}
+
+\subsection{Function 1 }
+\begin{verbatim}
+#Creating a function that reads files and columns
+def col_list_print(file, num):
+    #opens file
+    dfile = open(file)
+    # use pandas to make the data easier to work with
+    import pandas as pd
+    # set tmp_data and access as it through pandas
+    tmp_data = pd.read_csv(dfile)
+    # set tmp_data and access as it through numpy
+    data = tmp_data.to_numpy()
+    # reads data and columns for each species and adds it to list
+    Species = (data[:, [num]]).tolist()
+    #close file
+    dfile.close()
+    print(Species)
+
+col_list_print('Karan_Dataset.csv', 6)
+#real alba (allelopathic shrub) data from col 6
+
+col_list_print('Karan_Dataset.csv', 8)
+#real spart (perennial grass) data from column 8
+
+\end{verbatim}
+
+\subsection{Function 2 }
+\begin{verbatim}
+#making a function that allows me to mass plot different columns 
+def allplots(file, num):
+    import matplotlib.pyplot as plt
+    #opens file
+    dfile = open(file)
+    #import pandas to look at data
+    import pandas as pd
+    # access tmp_data into pandas
+    tmp_data = pd.read_csv(dfile)
+    #set data to be ab accessed through numpy
+    data = tmp_data.to_numpy()
+    # acquires species data from file and column and adds it to a list
+    Species = (data[:, [num]]).tolist()
+    #make empty list to be used for storing later
+    empty_list = []
+    for sublist in Species:
+        for item in sublist:
+            #add species to once empty list
+            empty_list.append(item)
+    Species = empty_list
+    #closes file
+    dfile.close()
+    # number of species
+    y = Species
+    N = len( y )
+    x = range( N )
+    width = 1/1.5
+    plt.bar( x, y, width, color="blue" )
+    plt.show()
+
+
+#plotting Real_Alba (allelopathic dwarf shrub) and its interactions in different
+# types of arid environments and species to measure coexistence
+allplots('Karan_Dataset.csv', 6)
+
+#plotting Real_Spart (perennial grass) and its interactions in different
+# types of arid environments and species to measure coexistence
+allplots('Karan_Dataset.csv', 8)
+
+\end{verbatim}
+
+\subsection{Function 3 }
+\begin{verbatim}
+#getting a species count
+def col_count_val(file, col):
+    #opens file
+    dfile = open(file)
+    # import pandas for data analysis
+    import pandas as pd
+    #access tmp_data through pandas
+    tmp_data = pd.read_csv(dfile)
+    # make tmp_data accesible via numpy for data manipulation
+    data = tmp_data.to_numpy()
+    #make a new column data and add it to a list from tmp_data columns
+    coldata = tmp_data[col].tolist()
+    counts = dict()
+    #iterations for counts in column data
+    for ii in coldata:
+        counts[ii] = counts.get(ii, 0) + 1
+    #closes file
+    dfile.close()
+    print(counts)
+    #prints value in the data file and the column named species and outputs a total count
+col_count_val("Karan_Dataset.csv", "species")
+
+\end{verbatim}
+
+\subsection{Function 4}
+\begin{verbatim}
+library(ggplot2)
+#import ggplot to use graphical features
+library(dplyr)
+#used for data manipulation
+Karan_Dataset <- read.csv("~/Karan_Dataset.csv")
+# imported my dataset
+  View(Karan_Dataset)
+#checked to see if it loaded correctly
+attach(Karan_Dataset)
+#officially loads in dataset into R
+ggplot(Karan_Dataset)
+#using ggplot for my dataset, so I do not end up using the Base R plot feature
+(Karan_Dataset)
+#used  str to check if the column I selected loads in properly
+str( Karan_Dataset$species)
+#first 6 lines of my data
+head(Karan_Dataset)
+#using ggplot for my Site column and counting the occurence at each site
+p<- ggplot(Karan_Dataset, aes(Site))
+#aestically adds to the histogram, by specifying how to fill in inner and outer color features for the histogram
+p + geom_histogram(stat="count", main = "Coexistence at Sites", fill= "Green", color = "red")
+\end{verbatim}
+
+\subsection{Function 5}
+\begin{verbatim}
+library(ggplot2)
+#import ggplot to use graphical features
+library(dplyr)
+#used for data manipulation
+Karan_Dataset <- read.csv("~/Karan_Dataset.csv")
+# imported my dataset
+View(Karan_Dataset)
+#checked to see if it loaded correctly
+attach(Karan_Dataset)
+#officially loads in dataset into R
+ggplot(Karan_Dataset)
+#using ggplot for my dataset in order to not just have base R plot
+(Karan_Dataset)
+#used  str to check if the column I selected loads in properly
+str( Karan_Dataset$A..herba.alba.Expected.coex.)
+head(Karan_Dataset)
+#uses ggplot plot to specify withing my dataset to focus on the species column and count the number of occurneces for each species
+p<- ggplot(Karan_Dataset, aes(species))
+#aestically adds to the histogram, by specifying how to fill in inner and outer color features for the histogram
+p + geom_histogram(stat="count", main = "Coexistence at Sites", fill= "Green", color = "red")
+\end{verbatim}
+
+\section{Results}
+I plan to state the results for the coexistence variance amongst the three different species (the perennial grass, Lygeum
+spartum, the allelopathic dwarf shrub, Artemisia herba-alba, and the nurse shrub, Salsola vermiculata) and how the aridity (low aridness and high aridity)  of the environment played a role in the coexistence variance.
+
+\newpage
+\section{Figures}
+
+\begin{figure}[h]
+	\caption{Species Coexistence Count\label{fig: Plot}}
+	\centering
+	\includegraphics[width=0.3\paperwidth]{Rplot02.png}
+\end{figure} 
+
+\newpage
+\begin{figure}[h]
+\caption{Species Sites Count\label{fig: Plot}}
+	\centering
+	\includegraphics[width=0.3\paperwidth]{Rplot.png}
+\end{figure}
+
+
+\newpage
+\section{Discussion}
+I plan to come up with a plausible expalnation form the data that I have manupulated to see if there was another cause and effect relationship that was not stated in the original article, such as comparing the expected and real coexistence amongst two different species in different aridity environments as well.
+
+\newpage
+Reference
+
+
+Aguiar, M. R., and O. E. Sala. 1999. Patch structure, dynamics and implications for the functioning of arid ecosystems. Trends Ecol. Evol. 14:273–277.
+
+Gomez-Aparicio, L. 2009. The role of plant interactions in the restoration of degraded ecosystems: a meta-analysis across life-forms and ecosystems. J. Ecol. 97:1202–1214.
+
+
+
+\end{document}
+
+
+
+
+
