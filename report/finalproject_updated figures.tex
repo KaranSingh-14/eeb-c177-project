@@ -17,7 +17,7 @@
 \begin{document}
 \maketitle
 \section*{Abstract}
-Discuss the concpet of coexistence and how plants have this in order for them to thrive as a species. Also, I will mention that certain planst do not have positive interactions with other and actaully release toxic chemicals, which decrease the likelyhood of two species to be able to coexist with one another.
+Discuss the concept of coexistence and how plants have this in order for them to thrive as a species. Also, I will mention that certain planst do not have positive interactions with other and actaully release toxic chemicals, which decrease the likelyhood of two species to be able to coexist with one another.
 \newpage
 \tableofcontents
 
@@ -149,7 +149,7 @@ head(Karan_Dataset)
 #using ggplot for my Site column and counting the occurence at each site
 p<- ggplot(Karan_Dataset, aes(Site))
 #aestically adds to the histogram, by specifying how to fill in inner and outer color features for the histogram
-p + geom_histogram(stat="count", main = "Coexistence at Sites", fill= "Green", color = "red")
+p + geom_histogram(stat="count", fill= "Green", color = "red" ) +ggtitle("Coexistence at Sites")
 \end{verbatim}
 
 \subsection{Function 5}
@@ -168,12 +168,12 @@ ggplot(Karan_Dataset)
 #using ggplot for my dataset in order to not just have base R plot
 (Karan_Dataset)
 #used  str to check if the column I selected loads in properly
-str( Karan_Dataset$A..herba.alba.Expected.coex.)
+str( Karan_Dataset$Transect)
 head(Karan_Dataset)
 #uses ggplot plot to specify withing my dataset to focus on the species column and count the number of occurneces for each species
-p<- ggplot(Karan_Dataset, aes(species))
+p<- ggplot(Karan_Dataset, aes(Transect))
 #aestically adds to the histogram, by specifying how to fill in inner and outer color features for the histogram
-p + geom_histogram(stat="count", main = "Coexistence at Sites", fill= "Green", color = "red")
+p + geom_histogram(stat="count", fill= "Pink", color = "Blue") +ggtitle("Coexistence at Transects")
 \end{verbatim}
 
 \section{Results}
@@ -184,16 +184,16 @@ spartum, the allelopathic dwarf shrub, Artemisia herba-alba, and the nurse shrub
 \section{Figures}
 
 \begin{figure}[h]
-	\caption{Species Coexistence Count\label{fig: Plot}}
+	\caption{Species Site  Count\label{fig: Plot}}
 	\centering
-	\includegraphics[width=0.3\paperwidth]{Rplot02.png}
+	\includegraphics[width=0.3\paperwidth]{Rplot03.png}
 \end{figure} 
 
 \newpage
 \begin{figure}[h]
-\caption{Species Sites Count\label{fig: Plot}}
+\caption{Species Transect Count\label{fig: Plot}}
 	\centering
-	\includegraphics[width=0.3\paperwidth]{Rplot.png}
+	\includegraphics[width=0.3\paperwidth]{Rplot01.png}
 \end{figure}
 
 
