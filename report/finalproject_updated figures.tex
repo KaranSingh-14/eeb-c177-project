@@ -10,7 +10,7 @@
 
 \title{My Final Project}
 \author{Karan Singh}
-\date{February 29 2020}
+\date{March 9 2020}
 
 % stuff for document
 
@@ -149,7 +149,7 @@ head(Karan_Dataset)
 #using ggplot for my Site column and counting the occurence at each site
 p<- ggplot(Karan_Dataset, aes(Site))
 #aestically adds to the histogram, by specifying how to fill in inner and outer color features for the histogram
-p + geom_histogram(stat="count", fill= "Green", color = "red" ) +ggtitle("Coexistence at Sites")
+p + geom_histogram(stat="count", fill= "Black" ) +ggtitle("Coexistence at Sites")
 \end{verbatim}
 
 \subsection{Function 5}
@@ -173,7 +173,7 @@ head(Karan_Dataset)
 #uses ggplot plot to specify withing my dataset to focus on the species column and count the number of occurneces for each species
 p<- ggplot(Karan_Dataset, aes(Transect))
 #aestically adds to the histogram, by specifying how to fill in inner and outer color features for the histogram
-p + geom_histogram(stat="count", fill= "Pink", color = "Blue") +ggtitle("Coexistence at Transects")
+p + geom_histogram(stat="count", fill= "Black") +ggtitle("Coexistence at Transects")
 \end{verbatim}
 
 \section{Results}
@@ -186,14 +186,14 @@ spartum, the allelopathic dwarf shrub, Artemisia herba-alba, and the nurse shrub
 \begin{figure}[h]
 	\caption{Species Site  Count\label{fig: Plot}}
 	\centering
-	\includegraphics[width=0.3\paperwidth]{Rplot03.png}
+	\includegraphics[width=0.3\paperwidth]{Rplot02.png}
 \end{figure} 
 
 \newpage
 \begin{figure}[h]
 \caption{Species Transect Count\label{fig: Plot}}
 	\centering
-	\includegraphics[width=0.3\paperwidth]{Rplot01.png}
+	\includegraphics[width=0.3\paperwidth]{Rplot04.png}
 \end{figure}
 
 
